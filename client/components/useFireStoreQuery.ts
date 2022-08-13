@@ -13,9 +13,6 @@ export interface profileProps {
   uid: string;
   gender: string;
   phoneNumber: string;
-  therapyCenter: string;
-  therapyCenterLocation: string;
-  therapyCenterPhoneNumber: string;
   terms: boolean;
   createdAt?: firebase.default.firestore.Timestamp;
 }
@@ -41,9 +38,6 @@ export const getProfile = async (uid: string) => {
     uid: "",
     gender: "",
     phoneNumber: "",
-    therapyCenter: "",
-    therapyCenterLocation: "",
-    therapyCenterPhoneNumber: "",
     terms: false
   }
   const queryData = query(ColRef, where('uid', '==', uid))

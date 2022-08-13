@@ -174,18 +174,6 @@ function profile(props: InferGetServerSidePropsType<typeof getServerSideProps>) 
                         <a className="text-blue-800" href="mailto:jane@example.com">{User.email}</a>
                       </div>
                     </div>
-                    <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Therapy Center</div>
-                      <div className="px-4 py-2">{currentUser?.therapyCenter}</div>
-                    </div>
-                    <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Therapy Center Location</div>
-                      <div className="px-4 py-2">{currentUser?.therapyCenterLocation}</div>
-                    </div>
-                    <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Therapy Center Phone Number</div>
-                      <div className="px-4 py-2">+91 {currentUser?.therapyCenterPhoneNumber}</div>
-                    </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-2 gap-5">
                     <Button

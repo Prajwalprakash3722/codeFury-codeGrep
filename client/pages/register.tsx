@@ -45,7 +45,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }
 };
 
-const Register = (_props: any) => {
+const Register = (_props: any) :JSX.Element=> {
   const router = useRouter();
   const [loading, setLoading] = React.useState(false);
 
@@ -54,9 +54,6 @@ const Register = (_props: any) => {
       fullName: "",
       email: "",
       phoneNumber: "",
-      therapyCenter: "",
-      therapyCenterLocation: "",
-      therapyCenterPhoneNumber: "",
       password: "",
       confirmPassword: "",
       gender: "",
@@ -66,9 +63,6 @@ const Register = (_props: any) => {
       confirmPassword: "",
       fullName: "",
       email: "",
-      therapyCenter: "",
-      therapyCenterLocation: "",
-      therapyCenterPhoneNumber: "",
       password: "",
       terms: "",
     },
@@ -106,9 +100,6 @@ const Register = (_props: any) => {
           uid: User.user?.uid as string,
           email: values.email,
           phoneNumber: values.phoneNumber,
-          therapyCenter: values.therapyCenter,
-          therapyCenterLocation: values.therapyCenterLocation,
-          therapyCenterPhoneNumber: values.therapyCenterPhoneNumber,
           gender: values.gender,
           terms: values.terms,
         };
@@ -133,11 +124,6 @@ const Register = (_props: any) => {
             <h1 className="text-2xl font-bold text-center text-indigo-600 sm:text-3xl">
               Register your account
             </h1>
-            <p className="max-w-md mx-auto mt-4 text-center text-gray-500">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Obcaecati sunt dolores deleniti inventore quaerat mollitia?
-            </p>
-
             <Box sx={{ maxWidth: 500 }} mx="auto">
               <form
                 onSubmit={form.onSubmit(
@@ -180,27 +166,6 @@ const Register = (_props: any) => {
                   placeholder="Phone Number"
                   type="tel"
                   {...form.getInputProps("phoneNumber")}
-                />
-                <TextInput
-                  required
-                  label="Therapy Center Name"
-                  placeholder="Therapy Center Name"
-                  type="text"
-                  {...form.getInputProps("therapyCenter")}
-                />
-                <TextInput
-                  required
-                  label="Therapy Center Location"
-                  placeholder="Therapy Center Location"
-                  type="text"
-                  {...form.getInputProps("therapyCenterLocation")}
-                />
-                <TextInput
-                  required
-                  label="Therapy Center Phone Number"
-                  placeholder="Therapy Center Phone Number"
-                  type="tel"
-                  {...form.getInputProps("therapyCenterPhoneNumber")}
                 />
                 <PasswordInput
                   required
