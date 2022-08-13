@@ -14,7 +14,7 @@ class MyDocument extends Document {
     return (
       <Html lang={lang}>
         <Head>
-          <title>Dhwani IISC</title>
+          <title>Codegrep</title>
         </Head>
         <body>
           <Main />

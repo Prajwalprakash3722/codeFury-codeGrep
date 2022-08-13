@@ -13,7 +13,7 @@ export default function Index() {
             <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
               Welcome to
               <br className="inline-block" />
-              <span className="text-2xl lg:text-9xl font-serif text-gray-500">
+              <span className="text-2xl lg:text-9xl sm:text-4xl font-serif text-gray-500">
                 Codegrep <br className="lg:hidden" />
               </span>
             </h1>
@@ -22,15 +22,13 @@ export default function Index() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-8 lg:gap-x-16 lg:items-center">
                   <div className="max-w-lg mx-auto text-center lg:text-left lg:mx-0">
                     <h2 className="text-2xl font-bold sm:text-2xl">
-                      Find your career path
+                      The Ultimate Startup Guide
                     </h2>
-
-                    <p className="mt-4 text-gray-600">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Aut vero aliquid sint distinctio iure ipsum cupiditate?
-                      Quis, odit assumenda? Deleniti quasi inventore, libero
-                      reiciendis minima aliquid tempora. Obcaecati, autem.
-                    </p>
+                    <ul>
+                      <li>Publish your ideas and get it reviewed.</li>
+                      <li> Build a portal for your startup.</li>
+                      <li>Find the perfect startup for investors.</li>
+                    </ul>
                     <div className="flex justify-left">
                       {user && (
                         <>
@@ -39,7 +37,7 @@ export default function Index() {
                               <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg">
                                 Dashboard
                               </button>
-                              
+
                             </a>
                           </Link>
                         </>
