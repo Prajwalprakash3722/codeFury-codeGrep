@@ -2,18 +2,22 @@ import {
   Box,
   Button,
   Group,
+  Image,
+  MultiSelect,
   Radio,
   RadioGroup,
+  Textarea,
   TextInput,
 } from "@mantine/core";
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 import toast, { Toaster } from "react-hot-toast";
 
-import { Alert } from "@mantine/core";
 import React from "react";
-import { childProfile } from "../@types";
+import { JobFormPortal } from "../@types";
 import { createStudentProfile } from "../components/useFireStoreQuery";
 import { firebaseAdmin } from "../lib/firebaseAdmin";
+import { firebase } from "../lib/firebaseClient";
+
 import { getErrorMessage } from "../hooks/getErrorMessage";
 import nookies from "nookies";
 import { useForm } from "@mantine/form";
@@ -50,42 +54,59 @@ const CreateApplication = (
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) => {
   const [loading, setLoading] = React.useState(false);
+  const [data, setData] = React.useState([
+    { value: "react", label: "React" },
+    { value: "ng", label: "Angular" },
+    {
+      value: "Java",
+      label: "Java",
+    },
+    {
+      value: "Python",
+      label: "Python",
+    },
+    {
+      value: "C++",
+      label: "C++",
+    },
+  ]);
 
-  const form = useForm<childProfile>({
+  const form = useForm<JobFormPortal>({
     initialValues: {
-      age: 0,
-      hearingAid: "",
+      name: firebase.auth().currentUser?.displayName as string,
+      email: props.user.email as string,
       gender: "",
-      hearingLoss: 0,
-      name: "",
-      parentContactNo: "",
-      parentEmailId: "",
-      therapistId: props.user.uid,
-      uid: "",
+      age: 0,
+      location: "",
+      github: "",
+      linkedin: "",
+      twitter: "",
+      skills: "",
+      imageURL: "",
+      description: "",
+      website: "",
+      achievements: "",
+      degree: "",
+      endDate: "",
+      fieldOfStudy: "",
+      gpa: 0,
+      instituationName: "",
+      isCurrent: false,
+      startDate: "",
+      companyName: "",
+      maxNoOfYears: 0,
+      position: "",
     },
     initialErrors: {
-      age: "",
-      hearingAid: "",
-      gender: "",
-      hearingLoss: "",
-      name: "",
-      parentContactNo: "",
-      parentEmailId: "",
-      therapistId: "",
-      uid: "",
-    },
-    validate: {
-      age(value) {
-        if (value < 0 || value > 100) {
-          return "Enter Valid Age";
-        } else if (!value) return "Enter Age";
-        return null;
-      },
-      hearingLoss(value) {
-        if (!value) return "Enter Hearing Loss";
-        else if (value > 100) return "Enter Valid Hearing Loss";
-        return null;
-      },
+      email: "",
+      location: "",
+      github: "",
+      linkedin: "",
+      twitter: "",
+      imageURL: "",
+      description: "",
+      website: "",
+      skills: "",
     },
   });
 
@@ -109,16 +130,10 @@ const CreateApplication = (
     <>
       <Box className="min-h-full min-w-full flex flex-col items-center justify-start">
         <Toaster position="top-center" />
-        {!props.user.email_verified && (
-          <Alert title="Warning!" color="yellow">
-            Verify your email to add student.If you have already verified your
-            email please login again.
-          </Alert>
-        )}
         <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
           <div className="max-w-lg mx-auto">
             <h1 className="text-2xl font-bold text-center text-indigo-600 sm:text-3xl">
-              CreateApplication
+              Create Application Form
             </h1>
             <Box sx={{ maxWidth: 500 }} mx="auto">
               <form
@@ -132,12 +147,14 @@ const CreateApplication = (
                 )}
                 className="p-8 mt-6 mb-0 space-y-4 rounded-lg shadow-2xl"
               >
+                <Image src={form.values.imageURL ? form.values.imageURL : ""} />
                 <TextInput
                   required
                   label="Full Name"
                   placeholder="Full Name"
                   type="text"
                   {...form.getInputProps("name")}
+                  value={form.values.name}
                 />
                 <RadioGroup
                   label="Select your gender"
@@ -159,40 +176,88 @@ const CreateApplication = (
                 />
                 <TextInput
                   required
-                  label="Hearing Loss"
-                  placeholder="96%"
-                  description="(0-100%)"
+                  label="Where are you based?"
+                  placeholder="eg:Bengaluru"
                   type="text"
-                  {...form.getInputProps("hearingLoss")}
+                  {...form.getInputProps("location")}
+                />
+                <Textarea
+                  required
+                  label="Your Achievements"
+                  placeholder="...."
+                  {...form.getInputProps("instituationName")}
+                />
+                  <Textarea
+                  required
+                  label="Your Achievements"
+                  placeholder="...."
+                  {...form.getInputProps("degree")}
+                />
+                  <Textarea
+                  required
+                  label="Your Achievements"
+                  placeholder="...."
+                  {...form.getInputProps("fieldOfStudy")}
                 />
                 <TextInput
                   required
-                  label="Hearing Aid Model"
-                  placeholder="Hearing Aid Model"
+                  type="text"
+                  {...form.getInputProps("skills")}
+                />
+                <MultiSelect
+                  label="Your Skills"
+                  data={data}
+                  placeholder="eg:Java,Python,C++ or add your own"
+                  searchable
+                  creatable
+                  getCreateLabel={(query) => `+ Add ${query}`}
+                  onCreate={(query) => {
+                    const item = { value: query, label: query };
+                    setData((current) => [...current, item]);
+                    return item;
+                  }}
+                />
+                <Textarea
+                  required
+                  label="Short Bio About Yourself"
+                  placeholder="...."
+                  {...form.getInputProps("description")}
+                />
+                <Textarea
+                  required
+                  label="Your Achievements"
+                  placeholder="...."
+                  {...form.getInputProps("achievements")}
+                />
+                <TextInput
+                  required
+                  label="Your LinkedIn Profile"
+                  placeholder="https://linkden.com/"
                   type="tel"
-                  {...form.getInputProps("hearingAid")}
+                  {...form.getInputProps("linkedin")}
                 />
                 <TextInput
-                  required
-                  label="Parent Contact Number"
-                  description="Do not include +91"
-                  placeholder="Parent Contact Number"
+                  label="Your Github Profile"
+                  placeholder="https://github.com/"
                   type="tel"
-                  {...form.getInputProps("parentContactNo")}
+                  {...form.getInputProps("github")}
                 />
                 <TextInput
                   required
-                  label="Parent Email Id"
-                  placeholder="youremailid@gmail.com"
-                  type="email"
-                  {...form.getInputProps("parentEmailId")}
+                  label="Your Twitter Profile"
+                  placeholder="https://twitter.com/"
+                  type="tel"
+                  {...form.getInputProps("twitter")}
+                />
+                <TextInput
+                  required
+                  label="Your  Portfolio"
+                  placeholder="..."
+                  type="tel"
+                  {...form.getInputProps("website")}
                 />
                 <Group position="center" mt="xl">
-                  <Button
-                    type="submit"
-                    loading={loading}
-                    disabled={!props.user.email_verified}
-                  >
+                  <Button type="submit" loading={loading}>
                     Submit
                   </Button>
                 </Group>

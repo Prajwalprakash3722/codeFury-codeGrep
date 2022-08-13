@@ -1,4 +1,3 @@
-import Achievers from "../components/Achievers";
 import { Image } from "@mantine/core";
 import Link from "next/link";
 import React from "react";
@@ -207,7 +206,6 @@ export default function Index() {
           </div>
         </div>
       </section>
-      <Achievers />
     </>
   );
 }

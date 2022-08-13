@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { useAuth } from "../hooks/auth";
 import { useRouter } from "next/router";
+import { firebase} from "../lib/firebaseClient";
 
 const NavBar = () => {
   const { user } = useAuth();
@@ -69,7 +70,14 @@ const NavBar = () => {
                     Dashboard
                   </a>
                 </Link>
-                
+                  <Link href={`/create`}>
+                  <a
+                    className="text-gray-500 hover:text-indigo-400"
+                    href="/create"
+                  >
+                    Create Application
+                  </a>
+                </Link>
                 {/* <Link href="/manage">
                   <a className="text-gray-500 hover:text-indigo-400" href="/contact">
                     Manage Students
@@ -102,6 +110,14 @@ const NavBar = () => {
                     href="/contact"
                   >
                     Contact
+                  </a>
+                </Link>
+                <Link href="/apply">
+                  <a
+                    className="text-gray-500 hover:text-indigo-400"
+                    href="/apply"
+                  >
+                    Apply
                   </a>
                 </Link>
               </>
