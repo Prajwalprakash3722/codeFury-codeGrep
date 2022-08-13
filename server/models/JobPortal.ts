@@ -3,10 +3,16 @@ import mongoose from "mongoose";
 const applicantSchema = new mongoose.Schema({
   name: String,
   email: String,
-  password: String,
+  gender: {
+    type: String,
+    enum: ["Male", "Female", "Prefer not to mention"],
+    default: "Prefer not to mention"
+  },
+  age: Number,
   imageURL: String,
   location: String,
   description: String,
+  resumeURL: String,
   website: String,
   linkedin: String,
   github: String,
@@ -52,15 +58,32 @@ const jobSchema = new mongoose.Schema({
   location: String,
   pay: Number,
   deadline: String,
-  jobType : {
+  jobType: {
     type: String,
-    enum: ['full time', 'part time', 'internship', 'freelance'],
-    default: 'full time'
+    enum: ["full time", "part time", "internship", "freelance"],
+    default: "full time"
   },
-  clientID : mongoose.Schema.Types.ObjectId,
-  skillsNecessary : [mongoose.Schema.Types.ObjectId],
-  applicants : [mongoose.Schema.Types.ObjectId]
-})
+  clientID: mongoose.Schema.Types.ObjectId,
+  skillsNecessary: [mongoose.Schema.Types.ObjectId],
+  applicants: [mongoose.Schema.Types.ObjectId]
+});
+
+const startupSchema = new mongoose.Schema({
+  name: String,
+  username: String,
+  coFounders: String,
+  countryOfOrigin: String,
+  companySize: Number,
+  valuation: Number,
+  website: String,
+  pitch: String,
+  pitchURL: String, //video link
+  adminStaff: {
+    CEO: String,
+    CTO: String,
+    COO: String
+  }
+});
 
 const Skills = mongoose.model("Skills", skillsSchema);
 
@@ -68,4 +91,6 @@ const Applicant = mongoose.model("JobPortal", applicantSchema);
 
 const Job = mongoose.model("Job", jobSchema);
 
-export { Applicant, Skills, Job };
+const StartUp = mongoose.model("StartUp", startupSchema);
+
+export { Applicant, Skills, Job, StartUp };
