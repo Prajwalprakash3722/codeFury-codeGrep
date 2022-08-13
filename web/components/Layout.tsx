@@ -23,8 +23,8 @@ const Links: Array<{
       href: "/onboard",
       label: "Register",
     }, {
-      href: 'how-this-works',
-      label: "How This Works"
+      href: '/apply',
+      label: "Apply"
     }
   ]
 
