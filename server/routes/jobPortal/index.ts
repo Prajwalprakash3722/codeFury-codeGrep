@@ -1,5 +1,5 @@
 import Express from "express";
-import { createUpdatedIdea } from "../../controllers/jobPortal/updateIdea";
+import { createUpdatedIdea, createUpdatedUpvotes } from "../../controllers/jobPortal/updateIdea";
 import {
   addJob,
   getAllJobs,
@@ -96,7 +96,7 @@ router.get("/startups", (_req, res) => {
 });
 router.get("/startup", (_req, res) => {
   console.log(_req.query.clientID);
-  
+
   findStartUp(_req.query.clientID as string)
     .then((result) => {
       console.log(result);
@@ -135,7 +135,7 @@ router.post("/idea", (_req, res) => {
       res.status(401).json(err);
     });
 });
-router.put("/idea", async(_req, res) => {
+router.put("/idea", async (_req, res) => {
   const idea = await createUpdatedIdea(_req.body.data, _req.body.id);   //controller
   let newData = {
     threads: idea
@@ -149,6 +149,19 @@ router.put("/idea", async(_req, res) => {
     );
 });
 
-
+router.put('/upvote', async (_req, res) => {
+  const idea = await createUpdatedUpvotes(_req.body.data, _req.body.id);   //controller
+  let newData = {
+    upvotes: idea
+  }
+  updateIdea(_req.body.id, newData)
+    .then((result) => {
+      res.status(200).json(result);
+    }).catch((err) => {
+      res.status(401).json(err);
+    }
+    );
+}
+);
 
 module.exports = router;
