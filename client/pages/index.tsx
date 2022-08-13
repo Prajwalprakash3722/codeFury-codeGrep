@@ -13,16 +13,16 @@ export default function Index() {
           <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
             <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
               Welcome to
-              <br className="inline-block" />
-              <span className="text-2xl lg:text-9xl font-serif text-gray-500">
+              <br className="inline-flex" />
+              <span className="text-3xl lg:text-9xl font-serif text-gray-500">
                 Dhwani <br className="lg:hidden" />
               </span>
             </h1>
             <section>
-              <div className="inline-block">
+              <div className="inline-flex">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-8 lg:gap-x-16 lg:items-center">
                   <div className="max-w-lg mx-auto text-center lg:text-left lg:mx-0">
-                    <h2 className="text-3xl font-bold sm:text-4xl">
+                    <h2 className="text-2xl font-bold sm:text-2xl">
                       Find your career path
                     </h2>
 
@@ -117,7 +117,7 @@ export default function Index() {
 
                     <a
                       className="block p-4 border border-gray-100 shadow-sm rounded-xl focus:outline-none focus:ring hover:border-gray-200 hover:ring-1 hover:ring-gray-200"
-                      href="/accountant"
+                      href="/top-startups"
                     >
                       <span className="inline-block p-3 rounded-lg bg-gray-50">
                         <svg
@@ -138,10 +138,10 @@ export default function Index() {
                         </svg>
                       </span>
 
-                      <h6 className="mt-2 font-bold">Accountant</h6>
+                      <h6 className="mt-2 font-bold">Top Startups</h6>
 
                       <p className="hidden sm:mt-1 sm:text-sm sm:text-gray-600 sm:block">
-                        Lorem ipsum dolor sit amet consectetur.
+                        For the investors.
                       </p>
                     </a>
 
@@ -200,8 +200,8 @@ export default function Index() {
               src="hero.webp"
               className="object-cover object-center rounded"
               alt="hero"
-              height={600}
-              width={600}
+              height={500}
+              width={500}
             />
           </div>
         </div>

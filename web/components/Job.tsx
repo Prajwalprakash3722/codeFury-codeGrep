@@ -8,9 +8,9 @@ function Job_title() {
         //   <Grid.Col span={6}><Buttons/></Grid.Col>
         // </Grid>
         <>
-            <a className="relative block p-8 border border-gray-100 shadow-xl rounded-xl" href="">
-                <span className="absolute right-4 top-4 rounded-full px-3 py-1.5 bg-green-100 text-green-600 font-medium text-xs">
-                    4.3
+            <div className="relative block p-8 border border-gray-100 shadow-xl rounded-xl">
+                <span className="absolute right-4 top-4 rounded-full px-3 py-1.5 font-medium text-xs">
+                    <Buttons/>
                 </span>
 
                 <div className="mt-4 text-gray-500 sm:pr-8">
@@ -35,7 +35,7 @@ function Job_title() {
                         You can manage phone, email and chat conversations all from a single mailbox.
                     </p>
                 </div>
-            </a>
+            </div>
 
         </>
     );

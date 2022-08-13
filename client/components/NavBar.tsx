@@ -82,6 +82,11 @@ const NavBar = () => {
                     Apply
                   </a>
                 </Link>
+                <Link href="/top-pages">
+                  <a className="text-gray-500 hover:text-indigo-400" href="/top-pages">
+                      Top Ideas
+                  </a>
+                </Link>
               </>
             )}
           </nav>
