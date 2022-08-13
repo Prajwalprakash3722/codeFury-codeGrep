@@ -29,10 +29,6 @@ const main = async () => {
       message: `Hello from the Server`
     });
   });
-  
-  server.listen(3001, function () {
-    console.log("listening on *:3001");
-  });
   app.listen(port, () => {
     console.log(`server listening at http://localhost:${port}`);
   });
