@@ -10,6 +10,9 @@ import { Server } from "socket.io";
 import http from "http";
 import path from "path";
 import dotenv from "dotenv";
+import dbConnect from "./models/dbConnect";
+import { getAllJobs, addJob } from "./models/jobCRUD";
+dbConnect();
 
 dotenv.config({ path: path.resolve(__dirname, ".env") });
 const main = async () => {
@@ -26,7 +29,10 @@ const main = async () => {
       message: `Hello from the Server`
     });
   });
-
+  
+  server.listen(3001, function () {
+    console.log("listening on *:3001");
+  });
   app.listen(port, () => {
     console.log(`server listening at http://localhost:${port}`);
   });
