@@ -17,6 +17,7 @@ model User {
   password String
   loggedIn Boolean
   Token    Token[]
+  role     String
 }
 
 model Token {
@@ -34,4 +35,11 @@ model Token {
 enum TokenType {
   EMAIL
   API
+}
+
+enum Role {
+  ADMIN
+  MENTOR
+  MENTEE
+  APPLICANT
 }

@@ -7,7 +7,7 @@ import nookies from "nookies";
 import toast from "react-hot-toast";
 import { useForm } from "@mantine/form";
 import { useRouter } from "next/router";
-
+import axios from "axios";
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
     const cookies = nookies.get(ctx);
@@ -32,7 +32,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }
 };
 
-const Login: NextPage = () => {
+const Login: NextPage = (ctx) => {
   const [loading, setLoading] = React.useState(false);
   const router = useRouter();
   const form = useForm({
@@ -50,7 +50,21 @@ const Login: NextPage = () => {
       },
     },
   });
-  const submitForm = async (values: typeof form.values) => {};
+  const submitForm = async (data: typeof form.values) => {
+    try {
+      const res = await axios.post("http://localhost:5000/auth/login", {
+        data,
+      });
+      if (res.status == 200) {
+        nookies.set(ctx, "token", res.data.token);
+        router.push("/");
+      } else {
+        toast.error("Invalid credentials");
+      }
+    } catch (err) {
+      toast.error("Invalid credentials");
+    }
+  };
   return (
     <>
       <Box className="min-h-full min-w-full flex flex-col items-center justify-start">

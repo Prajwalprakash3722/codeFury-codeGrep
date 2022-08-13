@@ -42,31 +42,31 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 
 
 
-function profile(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
+function Profile(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [opened, setOpened] = useState(false);
-  const [currentUser, setCurrentUser] = useState<profileProps>();
-  useEffect(() => {
-    if (props.user) {
-      getCurrentUser();
-    }
-    return () => {
-      console.log('cleanup');
-    }
-  }, [])
+  const [currentUser, setCurrentUser] = useState(null);
+  // useEffect(() => {
+  //   if (props) {
+  //     getCurrentUser();
+  //   }
+  //   return () => {
+  //     console.log('cleanup');
+  //   }
+  // }, [])
 
-  const getCurrentUser = async () => {
-    try {
+  // const getCurrentUser = async () => {
+  //   try {
 
-      const snapShot = await getProfile(User.uid);
-      return setCurrentUser(snapShot);
-    } catch (e) {
-      console.log(e);
-    }
-  }
+  //     const snapShot = await getProfile(User.uid);
+  //     return setCurrentUser(snapShot);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }
 
 
 
-  const User = JSON.parse(props.user);
+  const User = null;
   const form = useForm({
     initialValues: {
       password: '',
@@ -91,24 +91,24 @@ function profile(props: InferGetServerSidePropsType<typeof getServerSideProps>) 
   /**
    * @description Dynamically import the lib to reduce bundle size
    */
-  const sendEmail = async () => {
+  // const sendEmail = async () => {
 
-    await firebase.auth().currentUser?.sendEmailVerification();
-  }
+  //   await firebase.auth().currentUser?.sendEmailVerification();
+  // }
 
-  const submitForm = async (values: typeof form.values) => {
-    await firebase.auth().currentUser?.updatePassword(values.confirmPassword);
-  }
+  // const submitForm = async (values: typeof form.values) => {
+  //   await firebase.auth().currentUser?.updatePassword(values.confirmPassword);
+  // }
   return (
     <>
       <Toaster />
-      <ChangePasswordModal
+      {/* <ChangePasswordModal
         opened={opened}
         setOpened={setOpened}
         form={form}
         submitForm={submitForm}
         toast={toast}
-      />
+      /> */}
       <LoadingOverlay visible={currentUser === undefined ? true : false} />
       <Box className="bg-gray-100">
         <div className="w-full text-white bg-main-color">
