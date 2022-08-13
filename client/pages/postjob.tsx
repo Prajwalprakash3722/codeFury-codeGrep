@@ -21,6 +21,8 @@ import { getErrorMessage } from "../hooks/getErrorMessage";
 import nookies from "nookies";
 import { useForm } from "@mantine/form";
 import { uuid } from "uuidv4";
+import { DatePicker } from "@mantine/dates";
+import axios from "axios";
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
@@ -72,6 +74,7 @@ const CreateApplication = (
 
   const form = useForm<JobType>({
     initialValues: {
+      clientID: props.user.uid,
       title: "",
       description: "",
       location: "",
@@ -96,12 +99,13 @@ const CreateApplication = (
 
   const submitForm = async (values: typeof form.values) => {
     {
+      console.log(values);
       setLoading(true);
       try {
-        await createStudentProfile({ ...values, uid: uuid() });
+        await axios.post("http://localhost:5000/jobportal/job", values);
         setLoading(false);
         form.reset();
-        toast.success("Successfully Added Profile");
+        toast.success("Successfully Added Job");
       } catch (e: any) {
         toast.dismiss();
         setLoading(false);
@@ -117,7 +121,7 @@ const CreateApplication = (
         <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
           <div className="max-w-lg mx-auto">
             <h1 className="text-2xl font-bold text-center text-indigo-600 sm:text-3xl">
-                   Post a Job  Application            
+              Post a Job Application
             </h1>
             <Box sx={{ maxWidth: 500 }} mx="auto">
               <form
@@ -134,7 +138,7 @@ const CreateApplication = (
                 {" "}
                 <TextInput
                   required
-                  label="Title"
+                  label="Job Title"
                   placeholder="title"
                   type="text"
                   {...form.getInputProps("title")}
@@ -161,7 +165,7 @@ const CreateApplication = (
                   type="number"
                   {...form.getInputProps("pay")}
                 />
-                <TextInput
+                <DatePicker
                   required
                   label="Deadline"
                   placeholder="dd/mm/yy"
@@ -169,12 +173,11 @@ const CreateApplication = (
                   {...form.getInputProps("deadline")}
                 />
                 <Select
-                 data={[
-                    
-                    { value: 'full time', label: 'Full time' },
-                    { value: 'part time', label: 'part time' },
-                    { value: 'internship', label: 'Internship' },
-                    { value: 'freelance', label: 'Freelance' },
+                  data={[
+                    { value: "full time", label: "Full time" },
+                    { value: "part time", label: "part time" },
+                    { value: "internship", label: "Internship" },
+                    { value: "freelance", label: "Freelance" },
                   ]}
                   label="Job type"
                   placeholder="sdfdssf"
@@ -193,6 +196,7 @@ const CreateApplication = (
                     setData((current) => [...current, item]);
                     return item;
                   }}
+                  {...form.getInputProps("skillsNecessary")}
                 />
                 <Group position="center" mt="xl">
                   <Button type="submit" loading={loading}>

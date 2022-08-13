@@ -1,7 +1,6 @@
 import type {
   GetServerSidePropsContext,
   InferGetServerSidePropsType,
-  NextPage,
 } from "next";
 import JobTitle from "../components/JobTitle";
 import axios from "axios";

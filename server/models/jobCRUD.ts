@@ -16,7 +16,7 @@ type JobType = {
   skillsNecessary: [mongoose.Schema.Types.ObjectId]
 };
 
-const addJob = async (data: JobType) => {
+const addJob = async (data: typeof Job) => {
   const newJob = new Job(data);
   return await newJob.save();
 };

@@ -1,4 +1,4 @@
-import { Activity, AllActivities, SuccessStories, dashboardTableData } from '../@types/index.d';
+import { Activity, AllActivities, SuccessStories, dashboardTableData, JobType } from '../@types/index.d';
 import { DocumentReference, addDoc, collection, doc, getDoc, getDocs, getFirestore, limit, query, serverTimestamp, updateDoc, where } from "firebase/firestore";
 import { TableData, childProfile } from "../@types";
 
@@ -85,7 +85,7 @@ export const getStudentMentorData = async (uid: string) => {
 
 
 export const createStudentProfile = async (data: any): Promise<DocumentReference<childProfile>> => {
-  const colRef = collection(firestore, 'childProfiles');
+  const colRef = collection(firestore, 'JobData');
   return addDoc(colRef, {
     created: serverTimestamp(),
     ...data
@@ -103,6 +103,18 @@ export const getAllActivities = async (uid: string) => {
   else {
     return null;
   }
+}
+
+export const getJobs = async () => {
+  let arr: JobType[] = [];
+
+  const colRef = collection(firestore, 'JobData');
+  const queryData = query(colRef);
+  const querySnapshot = await getDocs(queryData);
+  querySnapshot.forEach((doc) => {
+    arr.push(doc.data() as any);
+  });
+  return arr;
 }
 
 

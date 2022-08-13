@@ -23,8 +23,7 @@ async function fetchCompanyName(id: string) {
 
 
 
-
-async function JobTitle(props: JobType) {
+function JobTitle(props: JobType) {
   const [applied, setApplied] = React.useState(false);
 
   return (
@@ -80,7 +79,7 @@ async function JobTitle(props: JobType) {
                   className="font-medium underline hover:text-gray-700"
                 >
                   {"  "}
-                  {await fetchCompanyName(props.clientID)}
+                  {/* {await fetchCompanyName(props.clientID)} */}
                 </a>
               </p>
               <p className="hidden sm:block sm:text-xs sm:text-gray-500">
