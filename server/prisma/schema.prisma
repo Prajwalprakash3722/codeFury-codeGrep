@@ -43,3 +43,60 @@ enum Role {
   MENTEE
   APPLICANT
 }
+model JobPortal {
+  id             String        @id @default(cuid())
+  name           String
+  email          String        @unique
+  password       String
+  imageURL       String
+  location       String
+  description    String //bio
+  website        String
+  linkedIn       String
+  github         String
+  twitter        String
+  experience     Experience[]
+  education      Education[]
+  skills         Skill[]
+  achievements   Achievement[]
+  jobPreferences String
+  resumeURL      String
+}
+
+model Experience {
+  id          String     @id @default(cuid())
+  companyName String
+  title       String
+  description String
+  startDate   DateTime
+  endDate     DateTime
+  JobPortal   JobPortal? @relation(fields: [jobPortalId], references: [id])
+  jobPortalId String?
+}
+
+model Education {
+  id              String     @id @default(cuid())
+  institutionName String
+  degree          String
+  description     String
+  startDate       DateTime
+  endDate         DateTime
+  gpa             String
+  JobPortal       JobPortal? @relation(fields: [jobPortalId], references: [id])
+  jobPortalId     String?
+}
+
+model Skill {
+  id          String     @id @default(cuid())
+  name        String
+  JobPortal   JobPortal? @relation(fields: [jobPortalId], references: [id])
+  jobPortalId String?
+}
+
+model Achievement {
+  id          String     @id @default(cuid())
+  name        String
+  date        DateTime
+  JobPortal   JobPortal? @relation(fields: [jobPortalId], references: [id])
+  jobPortalId String?
+}
