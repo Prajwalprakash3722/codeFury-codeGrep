@@ -57,12 +57,13 @@ const jobSchema = new mongoose.Schema({
   description: String,
   location: String,
   pay: Number,
-  deadline: String,
+  deadline: Date,
   jobType: {
     type: String,
     enum: ["full time", "part time", "internship", "freelance"],
     default: "full time"
   },
+  postedOn: Date,
   clientID: mongoose.Schema.Types.ObjectId,
   skillsNecessary: [mongoose.Schema.Types.ObjectId],
   applicants: [mongoose.Schema.Types.ObjectId]

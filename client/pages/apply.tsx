@@ -5,7 +5,7 @@ import { JobType } from "../@types";
 import React from "react";
 
 const Apply: NextPage = () => {
-  const [jobs, setJobs] = React.useState<JobType[]>();
+  const [jobs, setJobs] = React.useState<JobType[]>([]);
 
   React.useEffect(() => {
     fetchdata();
@@ -16,7 +16,7 @@ const Apply: NextPage = () => {
     console.log(res.data);
     setJobs(res.data);
   };
-
+  
   return (
     <>
       <div className="relative max-w-5xl mx-auto pt-20 sm:pt-24 lg:pt-32 grid grid-cols-1 gap-4">
@@ -35,6 +35,8 @@ const Apply: NextPage = () => {
                 deadline={job.deadline}
                 _id={job._id}
                 jobType={job.jobType}
+                clientID={job.clientID}
+                key={job._id}
               />
             </>
           ))}
