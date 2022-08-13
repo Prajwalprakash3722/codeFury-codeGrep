@@ -18,7 +18,168 @@ export default function Index() {
                 Dhwani <br className="lg:hidden" />
               </span>
             </h1>
-            <div className="min-w-screen">
+            <section>
+              <div className="inline-block">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-8 lg:gap-x-16 lg:items-center">
+                  <div className="max-w-lg mx-auto text-center lg:text-left lg:mx-0">
+                    <h2 className="text-3xl font-bold sm:text-4xl">
+                      Find your career path
+                    </h2>
+
+                    <p className="mt-4 text-gray-600">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Aut vero aliquid sint distinctio iure ipsum cupiditate?
+                      Quis, odit assumenda? Deleniti quasi inventore, libero
+                      reiciendis minima aliquid tempora. Obcaecati, autem.
+                    </p>
+                    <div className="flex justify-left">
+                      {user && (
+                        <>
+                          <Link href="/dashboard">
+                            <a>
+                              <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg">
+                                Dashboard
+                              </button>
+                            </a>
+                          </Link>
+                        </>
+                      )}
+                      {!user && (
+                        <>
+                          <Link href="/login">
+                            <a>
+                              <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                                Login
+                              </button>
+                            </a>
+                          </Link>
+                          <Link href="/register">
+                            <a>
+                              <button className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
+                                Register
+                              </button>
+                            </a>
+                          </Link>
+                        </>
+                      )}
+                    </div>
+                    {/* <a
+                      className="inline-flex items-center px-8 py-3 mt-8 text-white bg-indigo-600 border border-indigo-600 rounded hover:bg-transparent hover:text-indigo-600 active:text-indigo-500 focus:outline-none focus:ring"
+                      href="/onboard"
+                    >
+                      <span className="text-sm font-medium"> Get Started </span>
+
+                      <svg
+                        className="w-5 h-5 ml-3"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </a> */}
+                  </div>
+
+                  <div className="inline-block">
+                    <a
+                      className="block p-4 border border-gray-100 shadow-sm rounded-xl focus:outline-none focus:ring hover:border-gray-200 hover:ring-1 hover:ring-gray-200"
+                      href="/startup-submission"
+                    >
+                      <span className="inline-block p-3 rounded-lg bg-gray-50">
+                        <svg
+                          className="w-6 h-6"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                          <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+                          ></path>
+                        </svg>
+                      </span>
+
+                      <h6 className="mt-2 font-bold">
+                        Submit your startup for review
+                      </h6>
+                    </a>
+
+                    <a
+                      className="block p-4 border border-gray-100 shadow-sm rounded-xl focus:outline-none focus:ring hover:border-gray-200 hover:ring-1 hover:ring-gray-200"
+                      href="/accountant"
+                    >
+                      <span className="inline-block p-3 rounded-lg bg-gray-50">
+                        <svg
+                          className="w-6 h-6"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                          <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+                          ></path>
+                        </svg>
+                      </span>
+
+                      <h6 className="mt-2 font-bold">Accountant</h6>
+
+                      <p className="hidden sm:mt-1 sm:text-sm sm:text-gray-600 sm:block">
+                        Lorem ipsum dolor sit amet consectetur.
+                      </p>
+                    </a>
+
+                    <a
+                      className="block p-4 border border-gray-100 shadow-sm rounded-xl focus:outline-none focus:ring hover:border-gray-200 hover:ring-1 hover:ring-gray-200"
+                      href="/accountant"
+                    >
+                      <span className="inline-block p-3 rounded-lg bg-gray-50">
+                        <svg
+                          className="w-6 h-6"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                          <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+                          ></path>
+                        </svg>
+                      </span>
+
+                      <h6 className="mt-2 font-bold">Accountant</h6>
+
+                      <p className="hidden sm:mt-1 sm:text-sm sm:text-gray-600 sm:block">
+                        Lorem ipsum dolor sit amet consectetur.
+                      </p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* <div className="min-w-screen">
               <p className="text-left lg:text-center mb-8 leading-relaxed">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore,
                 provident. Nobis soluta laudantium at animi nesciunt velit quae,
@@ -32,50 +193,7 @@ export default function Index() {
                 provident. Nobis soluta laudantium at animi nesciunt velit quae,
                 maiores consectetur, aliquam, reiciendis eveniet. Eaque,
               </p>
-            </div>
-            <div className="flex justify-center">
-              {user && (
-                <>
-                  <Link href="/dashboard">
-                    <a>
-                      <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg">
-                        Dashboard
-                      </button>
-                    </a>
-                  </Link>
-                </>
-              )}
-              {!user && (
-                <>
-                  <Link href="/login">
-                    <a>
-                      <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                        Login
-                      </button>
-                    </a>
-                  </Link>
-                  <Link href="/register">
-                    <a>
-                      <button className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
-                        Register
-                      </button>
-                    </a>
-                  </Link>
-                </>
-              )}
-
-              <button className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg" name="Download Android App">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  className="w-6 h-6"
-                  viewBox="0 0 512 512"
-                >
-                  <path d="M99.617 8.057a50.191 50.191 0 00-38.815-6.713l230.932 230.933 74.846-74.846L99.617 8.057zM32.139 20.116c-6.441 8.563-10.148 19.077-10.148 30.199v411.358c0 11.123 3.708 21.636 10.148 30.199l235.877-235.877L32.139 20.116zM464.261 212.087l-67.266-37.637-81.544 81.544 81.548 81.548 67.273-37.64c16.117-9.03 25.738-25.442 25.738-43.908s-9.621-34.877-25.749-43.907zM291.733 279.711L60.815 510.629c3.786.891 7.639 1.371 11.492 1.371a50.275 50.275 0 0027.31-8.07l266.965-149.372-74.849-74.847z"></path>
-                </svg>
-                <span className="ml-4 flex items-center flex-col leading-none"></span>
-              </button>
-            </div>
+            </div> */}
           </div>
           <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
             <Image

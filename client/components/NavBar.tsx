@@ -36,7 +36,10 @@ const NavBar = () => {
             {user ? (
               <>
                 <Link href={`/dashboard`}>
-                  <a className="text-gray-500 hover:text-indigo-400" href="/learn">
+                  <a
+                    className="text-gray-500 hover:text-indigo-400"
+                    href="/learn"
+                  >
                     Dashboard
                   </a>
                 </Link>
@@ -59,13 +62,24 @@ const NavBar = () => {
                   </a>
                 </Link>
                 <Link href="/learn">
-                  <a className="text-gray-500 hover:text-indigo-400" href="/learn">
+                  <a
+                    className="text-gray-500 hover:text-indigo-400"
+                    href="/learn"
+                  >
                     Learn More
                   </a>
                 </Link>
                 <Link href="/contact">
-                  <a className="text-gray-500 hover:text-indigo-400" href="/contact">
+                  <a
+                    className="text-gray-500 hover:text-indigo-400"
+                    href="/contact"
+                  >
                     Contact
+                  </a>
+                </Link>
+                <Link href="/apply">
+                  <a className="text-gray-500 hover:text-indigo-400" href="/apply">
+                    Apply
                   </a>
                 </Link>
               </>
@@ -105,27 +119,31 @@ const NavBar = () => {
           </div>
 
           <div className="lg:hidden">
-            <Menu control={
-              <button
-                className="p-2 text-gray-600 bg-gray-100 rounded-lg"
-                type="button"
-                name="Mobile Navigation Menu"
-              >                 <svg
-                aria-hidden="true"
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                  <path
-                    d="M4 6h16M4 12h16M4 18h16"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                  />
-                </svg>
-              </button>}
+            <Menu
+              control={
+                <button
+                  className="p-2 text-gray-600 bg-gray-100 rounded-lg"
+                  type="button"
+                  name="Mobile Navigation Menu"
+                >
+                  {" "}
+                  <svg
+                    aria-hidden="true"
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4 6h16M4 12h16M4 18h16"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                    />
+                  </svg>
+                </button>
+              }
             >
               {user ? (
                 <>
@@ -147,52 +165,46 @@ const NavBar = () => {
                   <Divider />
                   <Menu.Label>Actions</Menu.Label>
                   <Menu.Item color="indigo">
-                    <button onClick={handleLogout}>
-                      Logout
-                    </button>
-                  </Menu.Item >
+                    <button onClick={handleLogout}>Logout</button>
+                  </Menu.Item>
                 </>
               ) : (
                 <>
                   <Menu.Label>Goto</Menu.Label>
 
-                  <Menu.Item >
+                  <Menu.Item>
                     <Link href="/authenticated">
                       <a className="text-gray-500" href="/">
                         Home
                       </a>
                     </Link>
                   </Menu.Item>
-                  <Menu.Item >
+                  <Menu.Item>
                     <Link href="/learn">
                       <a className="text-gray-500" href="/learn">
                         Learn More
                       </a>
                     </Link>
-                  </Menu.Item >
-                  <Menu.Item >
+                  </Menu.Item>
+                  <Menu.Item>
                     <Link href="/contact">
                       <a className="text-gray-500" href="/contact">
                         Contact
                       </a>
                     </Link>
-                  </Menu.Item >
+                  </Menu.Item>
                   <Divider />
                   <Menu.Label>Actions</Menu.Label>
                   <Menu.Item color="indigo">
                     <Link href="/login">
-                      <a href="/login">
-                        Login
-                      </a>
+                      <a href="/login">Login</a>
                     </Link>
-                  </Menu.Item >
+                  </Menu.Item>
                   <Menu.Item color="indigo">
                     <Link href="/register">
-                      <a href="/register">
-                        Register
-                      </a>
+                      <a href="/register">Register</a>
                     </Link>
-                  </Menu.Item >
+                  </Menu.Item>
                 </>
               )}
             </Menu>

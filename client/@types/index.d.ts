@@ -55,3 +55,46 @@ export interface dashboardTableData {
   therapyLastVisit: Date;
   therapyNextVisit: Date;
 }
+
+
+interface JobPortal {
+  name: string;
+  email: string;
+  password: string;
+  imageURL: string;
+  location: string;
+  description: string;
+  website: string;
+  linkedin: string;
+  github: string;
+  twitter: string;
+  experience: Experience[];
+  education: Education[];
+  skills: string[];
+  achievements: Achievement[];
+}
+
+interface Achievement {
+  name: string;
+  date: string;
+  description: string;
+}
+
+interface Education {
+  instituationName: string;
+  degree: string;
+  fieldOfStudy: string;
+  startDate: string;
+  endDate: string;
+  gpa: number;
+  isCurrent: boolean;
+}
+
+interface Experience {
+  companyName: string;
+  position: string;
+  description: string;
+  startDate: string;
+  endDate: string;
+  isCurrent: boolean;
+}
