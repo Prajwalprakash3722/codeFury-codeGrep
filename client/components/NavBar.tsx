@@ -78,6 +78,14 @@ const NavBar = () => {
                     Create Application
                   </a>
                 </Link>
+                <Link href={`/create`}>
+                  <a
+                    className="text-gray-500 hover:text-indigo-400"
+                    href="/postjob"
+                  >
+                    Post a job
+                  </a>
+                </Link>
                 {/* <Link href="/manage">
                   <a className="text-gray-500 hover:text-indigo-400" href="/contact">
                     Manage Students
