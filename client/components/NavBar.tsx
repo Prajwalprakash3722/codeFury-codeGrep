@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { useAuth } from "../hooks/auth";
 import { useRouter } from "next/router";
-import { firebase} from "../lib/firebaseClient";
+import { firebase } from "../lib/firebaseClient";
 
 const NavBar = () => {
   const { user } = useAuth();
@@ -70,7 +70,7 @@ const NavBar = () => {
                     Dashboard
                   </a>
                 </Link>
-                  <Link href={`/create`}>
+                <Link href={`/create`}>
                   <a
                     className="text-gray-500 hover:text-indigo-400"
                     href="/create"
@@ -129,7 +129,7 @@ const NavBar = () => {
                     Apply
                   </a>
                 </Link>
-                  <Link href={`/pitch`}>
+                <Link href={`/pitch`}>
                   <a
                     className="text-gray-500 hover:text-indigo-400"
                     href="/pitch"
@@ -161,7 +161,7 @@ const NavBar = () => {
                 <Link href="/profile">
                   <a className="px-3 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg">
                     {/* Logged as {user.displayName} */}
-                    profile
+                    Profile
                   </a>
                 </Link>
                 <button
@@ -277,8 +277,8 @@ const Footer = () => {
       <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
         {/* <span className="block w-32 h-10 bg-gray-200 rounded-lg"></span> */}
         <Image
-          src="dhwaniLogo.png"
-          alt="Dhwani Logo"
+          src="codegrep.png"
+          alt="Codegrep Logo"
           className="h-16 w-16 lg:h-20 lg:w-20"
         />
         <div className="grid grid-cols-1 gap-8 mt-8 sm:grid-cols-2 lg:grid-cols-4">
