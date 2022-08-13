@@ -143,7 +143,8 @@ const NavBar = () => {
               <>
                 <Link href="/profile">
                   <a className="px-3 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg">
-                    Logged as {user.displayName}
+                    {/* Logged as {user.displayName} */}
+                    profile
                   </a>
                 </Link>
                 <button
