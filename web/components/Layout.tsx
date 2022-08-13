@@ -1,35 +1,38 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
-import { AppShell, Header, Image, Menu, Tooltip } from "@mantine/core";
+import { AppShell, Button, Header, Image, Menu, Tooltip } from "@mantine/core";
 import Link from "next/link";
 import React from "react";
+import nookies from "nookies";
+import { useRouter } from "next/router";
 
 const Links: Array<{
   href: string;
   label: string;
 }> = [
-    {
-      href: "/",
-      label: "Home",
-    },
-    {
-      href: "/about",
-      label: "About",
-    },
-    {
-      href: "/login",
-      label: "Login",
-    },
-    {
-      href: "/onboard",
-      label: "Register",
-    }, {
-      href: '/apply',
-      label: "Apply"
-    }
-  ]
+  {
+    href: "/",
+    label: "Home",
+  },
+  {
+    href: "/about",
+    label: "About",
+  },
+  {
+    href: "/login",
+    label: "Login",
+  },
+  {
+    href: "/onboard",
+    label: "Register",
+  },
+  {
+    href: "/apply",
+    label: "Apply",
+  },
+];
 
-const NavBar = () => {
-
+const NavBar = (ctx: any) => {
+  const router = useRouter();
   return (
     <header>
       <div className="mx-auto max-w-screen-xl p-4">
@@ -49,15 +52,25 @@ const NavBar = () => {
           <nav className="hidden space-x-8 text-sm font-medium md:flex">
             {Links.map((link) => (
               <Link href={link.href} key={JSON.stringify(link)}>
-                <a className="text-gray-500 hover:text-indigo-400" href={link.href}>
+                <a
+                  className="text-gray-500 hover:text-indigo-400"
+                  href={link.href}
+                >
                   {link.label}
                 </a>
               </Link>
             ))}
+            <Button
+              onClick={() => {
+                nookies.destroy(ctx, "token");
+                router.push("/login");
+              }}
+            >
+              logout
+            </Button>
           </nav>
           <div className="lg:hidden">
-            <Menu
-            >
+            <Menu>
               <Menu.Target>
                 <button
                   className="rounded-lg bg-[#1A1B1E] p-2 text-gray-600"
@@ -132,15 +145,11 @@ const Footer = () => {
                 href="https://www.linkedin.com/in/prajwal-prakash-a3b9931b3/"
                 rel="noreferrer"
               >
-                Prajwal P, {" "}
+                Prajwal P,{" "}
               </a>
             </p>
             <Tooltip label="Contact ME">
-              <a
-                href="/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="/" target="_blank" rel="noopener noreferrer">
                 {/* <ChatIcon className="h-5 w-5 text-gray-400" /> */}
               </a>
             </Tooltip>

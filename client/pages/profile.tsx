@@ -1,13 +1,13 @@
 import { Box, Button, Divider, Image, LoadingOverlay } from '@mantine/core'
 import React, { useEffect } from 'react'
-// import { getProfile, profileProps } from '../components/useFireStoreQuery';
+import { getProfile, profileProps } from '../components/useFireStoreQuery';
 import toast, { Toaster } from 'react-hot-toast';
 
-// import ChangePasswordModal from '../components/changePasswordModal';
+import ChangePasswordModal from '../components/changePasswordModal';
 import { GetServerSidePropsContext } from 'next';
 import { InferGetServerSidePropsType } from 'next';
-// import { firebase, } from '../lib/firebaseClient';
-// import { firebaseAdmin } from '../lib/firebaseAdmin';
+import { firebase, } from '../lib/firebaseClient';
+import { firebaseAdmin } from '../lib/firebaseAdmin';
 import nookies from 'nookies';
 import { useForm } from '@mantine/form';
 import { useState } from 'react';
@@ -16,12 +16,12 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
     const cookies = nookies.get(ctx);
     console.log(JSON.stringify(cookies, null, 2));
-    // const token = await firebaseAdmin.auth().verifyIdToken(cookies.token);
-    // const { uid } = token;
-    // const user = await firebaseAdmin.auth().getUser(uid);
+    const token = await firebaseAdmin.auth().verifyIdToken(cookies.token);
+    const { uid } = token;
+    const user = await firebaseAdmin.auth().getUser(uid);
     return {
       props: {
-        // user: JSON.stringify(user, null, 2),
+        user: JSON.stringify(user, null, 2),
       },
     }
   } catch (err) {
@@ -42,31 +42,31 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 
 
 
-function Profile(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
+function profile(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [opened, setOpened] = useState(false);
-  const [currentUser, setCurrentUser] = useState(null);
-  // useEffect(() => {
-  //   if (props) {
-  //     getCurrentUser();
-  //   }
-  //   return () => {
-  //     console.log('cleanup');
-  //   }
-  // }, [])
+  const [currentUser, setCurrentUser] = useState<profileProps>();
+  useEffect(() => {
+    if (props.user) {
+      getCurrentUser();
+    }
+    return () => {
+      console.log('cleanup');
+    }
+  }, [])
 
-  // const getCurrentUser = async () => {
-  //   try {
+  const getCurrentUser = async () => {
+    try {
 
-  //     const snapShot = await getProfile(User.uid);
-  //     return setCurrentUser(snapShot);
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // }
+      const snapShot = await getProfile(User.uid);
+      return setCurrentUser(snapShot);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
 
 
-  const User = null;
+  const User = JSON.parse(props.user);
   const form = useForm({
     initialValues: {
       password: '',
@@ -91,24 +91,24 @@ function Profile(props: InferGetServerSidePropsType<typeof getServerSideProps>) 
   /**
    * @description Dynamically import the lib to reduce bundle size
    */
-  // const sendEmail = async () => {
+  const sendEmail = async () => {
 
-  //   await firebase.auth().currentUser?.sendEmailVerification();
-  // }
+    await firebase.auth().currentUser?.sendEmailVerification();
+  }
 
-  // const submitForm = async (values: typeof form.values) => {
-  //   await firebase.auth().currentUser?.updatePassword(values.confirmPassword);
-  // }
+  const submitForm = async (values: typeof form.values) => {
+    await firebase.auth().currentUser?.updatePassword(values.confirmPassword);
+  }
   return (
     <>
       <Toaster />
-      {/* <ChangePasswordModal
+      <ChangePasswordModal
         opened={opened}
         setOpened={setOpened}
         form={form}
         submitForm={submitForm}
         toast={toast}
-      /> */}
+      />
       <LoadingOverlay visible={currentUser === undefined ? true : false} />
       <Box className="bg-gray-100">
         <div className="w-full text-white bg-main-color">
@@ -173,18 +173,6 @@ function Profile(props: InferGetServerSidePropsType<typeof getServerSideProps>) 
                       <div className="px-4 py-2">
                         <a className="text-blue-800" href="mailto:jane@example.com">{User.email}</a>
                       </div>
-                    </div>
-                    <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Therapy Center</div>
-                      <div className="px-4 py-2">{currentUser?.therapyCenter}</div>
-                    </div>
-                    <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Therapy Center Location</div>
-                      <div className="px-4 py-2">{currentUser?.therapyCenterLocation}</div>
-                    </div>
-                    <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Therapy Center Phone Number</div>
-                      <div className="px-4 py-2">+91 {currentUser?.therapyCenterPhoneNumber}</div>
                     </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-2 gap-5">
