@@ -1,27 +1,45 @@
-import type { NextPage } from "next";
+import type {
+  GetServerSidePropsContext,
+  InferGetServerSidePropsType,
+  NextPage,
+} from "next";
 import JobTitle from "../components/JobTitle";
 import axios from "axios";
 import { JobType } from "../@types";
 import React from "react";
 
-const Apply: NextPage = () => {
-  const [jobs, setJobs] = React.useState<JobType[]>([]);
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  try {
+    const fetchdata = async () => {
+      const res = await axios.get("http://localhost:5000/jobportal/jobs");
+      return res.data;
+    };
 
-  React.useEffect(() => {
-    fetchdata();
-  }, []);
+    return {
+      props: {
+        job: await fetchdata(),
+      },
+    };
+  } catch (err) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/login",
+      },
 
-  const fetchdata = async () => {
-    const res = await axios.get("http://localhost:5000/jobportal/jobs");
-    console.log(res.data);
-    setJobs(res.data);
-  };
-  
+      props: {} as never,
+    };
+  }
+};
+
+const Apply = (
+  props: InferGetServerSidePropsType<typeof getServerSideProps>
+) => {
   return (
     <>
       <div className="relative max-w-5xl mx-auto pt-20 sm:pt-24 lg:pt-32 grid grid-cols-1 gap-4">
-        {jobs &&
-          jobs.map((job) => (
+        {props.job &&
+          props.job.map((job: JobType) => (
             <>
               <JobTitle
                 companyImageUrl={job.companyImageUrl}

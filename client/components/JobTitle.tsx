@@ -4,13 +4,27 @@ import toast, { Toaster } from "react-hot-toast";
 import { JobType } from "../@types";
 import axios from "axios";
 
-const fetchCompanyName = async (id: string) => {
-  // console.log(id);
-  const res = await axios.get(`http://localhost:5000/jobportal/startup?clientID=${id}`);
-  console.log(res.data);
-  return res.data.name;
+// const fetchCompanyName = async (id: string) => {
+//   // console.log(id);
+//   const res = await axios.get(`http://localhost:5000/jobportal/startup?clientID=${id}`);
+//   console.log(res.data);
+//   return res.data.name;
+// }
+
+
+async function fetchCompanyName(id: string) {
+  try {
+    const res = await axios.get(`http://localhost:5000/jobportal/startup?clientID=${id}`);
+    return res.data.name;
+  } catch (err) {
+    return "";
+  }
 }
-function JobTitle(props: JobType) {
+
+
+
+
+async function JobTitle(props: JobType) {
   const [applied, setApplied] = React.useState(false);
 
   return (
@@ -66,7 +80,7 @@ function JobTitle(props: JobType) {
                   className="font-medium underline hover:text-gray-700"
                 >
                   {"  "}
-                  {fetchCompanyName(props.clientID)}
+                  {await fetchCompanyName(props.clientID)}
                 </a>
               </p>
               <p className="hidden sm:block sm:text-xs sm:text-gray-500">

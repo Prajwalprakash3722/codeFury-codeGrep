@@ -1,26 +1,32 @@
-import { DataTable, StudentDataTable } from '../components/dataTable'
-import { Divider, LoadingOverlay } from '@mantine/core';
-import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
-import React, { useEffect, useState } from 'react'
-import { TableData, childProfile } from '../@types';
-import { getStudentMentorData, getTherapyStudentData } from '../components/useFireStoreQuery';
+import { DataTable, StudentDataTable } from "../components/dataTable";
+import { Divider, LoadingOverlay } from "@mantine/core";
+import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
+import React, { useEffect, useState } from "react";
+import { TableData, childProfile } from "../@types";
+import {
+  getStudentMentorData,
+  getTherapyStudentData,
+} from "../components/useFireStoreQuery";
 
-import { firebaseAdmin } from '../lib/firebaseAdmin';
-import nookies from "nookies"
+import { firebaseAdmin } from "../lib/firebaseAdmin";
+import nookies from "nookies";
+import Comment from "../components/Comments";
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
     const cookies = nookies.get(ctx);
     console.log(JSON.stringify(cookies, null, 2));
     const token = await firebaseAdmin.auth().verifyIdToken(cookies.token);
-    const { uid, email,email_verified } = token;
+    const { uid, email, email_verified } = token;
     return {
       props: {
         user: {
-          uid, email,email_verified
-        }
+          uid,
+          email,
+          email_verified,
+        },
       },
-    }
+    };
   } catch (err) {
     return {
       redirect: {
@@ -32,9 +38,9 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }
 };
 
-
-function dashboard(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
-
+function dashboard(
+  props: InferGetServerSidePropsType<typeof getServerSideProps>
+) {
   const [data, setData] = useState<TableData[]>([]);
   const [studentData, setStudentData] = useState<childProfile[]>([]);
 
@@ -43,9 +49,9 @@ function dashboard(props: InferGetServerSidePropsType<typeof getServerSideProps>
       getData();
     }
     return () => {
-      console.log('cleanup');
-    }
-  }, [])
+      console.log("cleanup");
+    };
+  }, []);
 
   const getData = async () => {
     try {
@@ -56,17 +62,16 @@ function dashboard(props: InferGetServerSidePropsType<typeof getServerSideProps>
     } catch (e) {
       console.log(e);
     }
-  }
-
-
+  };
 
   return (
     <>
       <div className="min-h-screen">
         <LoadingOverlay visible={!data} />
-      
-      </div></>
-  )
+        <Comment />
+      </div>
+    </>
+  );
 }
 
-export default dashboard
+export default dashboard;
