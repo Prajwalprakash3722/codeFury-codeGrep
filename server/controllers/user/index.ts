@@ -3,11 +3,11 @@ import { comparepassword, generateToken, hashpassword } from "../../Util";
 import express from 'express';
 import { Request } from 'express';
 import { TokenType } from '@prisma/client';
-
+import bcrypt from "bcrypt"
 const userController = {
 
   async registerUser(req: express.Request, res: express.Response, next: express.NextFunction) {
-    const { username: name, useremail: email, password } = req.body;
+    const { username: name, useremail: email, password, role } = req.body;
 
     const User = await prisma.user.findFirst({
       where: {
@@ -25,6 +25,7 @@ const userController = {
         data: {
           name,
           email,
+          role,
           password: hashpassword(password),
           loggedIn: false
         },
@@ -45,18 +46,19 @@ const userController = {
   },
   async loginUser(req: express.Request, res: express.Response, next: express.NextFunction) {
 
-    const { email, password } = req.body;
+    const { email, password } = req.body.data;
     const newUser = await prisma.user.findFirst({
       where: {
         email
       }
     })
+    console.log(password, newUser?.password)
     if (!newUser) {
       return res.status(400).json({
         ok: true,
         message: 'User does not exist'
       });
-    } else if (!comparepassword(password, newUser.password)) {
+    } else if (!await bcrypt.compare(password, newUser.password)) {
       return res.status(400).json({
         ok: true,
         message: 'Invalid Credentials'
@@ -80,14 +82,18 @@ const userController = {
       }
     })
 
-    res.status(200).send({
+    res.status(200).cookie('token', token, {
+      httpOnly: true,
+      secure: true,
+      maxAge: 60 * 60 * 1000
+    }).send({
       ok: true,
+      message: "User Logged In Successfully",
       token
     })
-
     next();
   },
-  async logoutUser(req: Request, _res: express.Response, next: express.NextFunction) {
+  async logoutUser(req: Request, res: express.Response, next: express.NextFunction) {
 
     const { id } = req.user;
     await prisma.user.update({
@@ -98,6 +104,7 @@ const userController = {
         loggedIn: false
       }
     })
+    res.clearCookie("token")
     next();
   },
 

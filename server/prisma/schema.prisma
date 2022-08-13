@@ -17,6 +17,7 @@ model User {
   password String
   loggedIn Boolean
   Token    Token[]
+  role     String
 }
 
 model Token {
@@ -36,6 +37,12 @@ enum TokenType {
   API
 }
 
+enum Role {
+  ADMIN
+  MENTOR
+  MENTEE
+  APPLICANT
+}
 model JobPortal {
   id             String        @id @default(cuid())
   name           String

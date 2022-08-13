@@ -7,14 +7,10 @@ const userValidation = () => {
     body('username').notEmpty(),
     // useremail must be an email and not empty
     body('useremail').isEmail({}).normalizeEmail().notEmpty(),
+    body('role').notEmpty(),
     // password must be at least 8 chars long and max 20, (should include at least one number, one uppercase and one lowercase letter) and not empty
-    body('password').isStrongPassword({
-      minLength: 8,
-      minUppercase: 1,
-      minLowercase: 1,
-      minSymbols: 1,
-      minNumbers: 1,
-    }).notEmpty(),
+    body('password').notEmpty(),
+
   ]
 }
 

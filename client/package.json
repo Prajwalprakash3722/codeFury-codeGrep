@@ -1,0 +1,58 @@
+{
+  "name": "dhwani",
+  "version": "0.1.1",
+  "private": true,
+  "author": {
+    "email": "prajwalprakash3722@gmail.com",
+    "name": "Prajwal Prakash",
+    "url": "https://www.devcoffee.me"
+  },
+  "license": "MIT",
+  "description": "A Hybrid Data-Driven App Using Next.js for real time data reading from Dhwani App",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "export": "next export",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@heroicons/react": "^1.0.6",
+    "@mantine/core": "^4.1.5",
+    "@mantine/dates": "^4.1.5",
+    "@mantine/form": "^4.1.5",
+    "@mantine/hooks": "^4.1.5",
+    "@types/react": "^16.9.56",
+    "capital-case": "^1.0.4",
+    "dayjs": "^1.11.1",
+    "firebase": "^9.7.0",
+    "firebase-admin": "^9.4.0",
+    "next": "^12.1.0",
+    "nookies": "^2.5.0",
+    "preact": "^10.7.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-firebase-hooks": "^5.0.3",
+    "react-hot-toast": "^2.2.0",
+    "recharts": "^2.1.9",
+    "typescript": "^4.0.5",
+    "uuidv4": "^6.2.13"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.5",
+    "postcss": "^8.4.12",
+    "tailwindcss": "^3.0.24",
+    "ts-node": "^10.7.0"
+  }
+}

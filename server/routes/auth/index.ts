@@ -5,7 +5,7 @@ import checkJwt from "../../middleware/authorization";
 const router = express.Router();
 
 
-router.get("/test", (_req, res) => {
+router.get("/", (_req, res) => {
   res.json({
     ok: true,
     message: "Hello from the Auth Routes"
