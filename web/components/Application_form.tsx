@@ -42,6 +42,17 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 
 
 
+// function profile(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
+//   const [opened, setOpened] = useState(false);
+//   const [currentUser, setCurrentUser] = useState<profileProps>();
+//   useEffect(() => {
+//     if (props.user) {
+//       getCurrentUser();
+//     }
+//     return () => {
+//       console.log('cleanup');
+//     }
+//   }, [])
 function Profile(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [opened, setOpened] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
@@ -66,6 +77,7 @@ function Profile(props: InferGetServerSidePropsType<typeof getServerSideProps>) 
 
 
 
+ // const User = JSON.parse(props.user);
   const User = null;
   const form = useForm({
     initialValues: {
@@ -199,13 +211,13 @@ function Profile(props: InferGetServerSidePropsType<typeof getServerSideProps>) 
                     {User.emailVerified ? (null) : (<>
                       <Button
                         className="px-5 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg"
-                        onClick={async () => {
-                          toast.promise(sendEmail(), {
-                            error: 'Some Thing Went Wrong',
-                            loading: 'Sending Email',
-                            success: 'Email Sent, Please Check Your Inbox'
-                          })
-                        }}
+                        // onClick={async () => {
+                        //   toast.promise(sendEmail(), {
+                        //     error: 'Some Thing Went Wrong',
+                        //     loading: 'Sending Email',
+                        //     success: 'Email Sent, Please Check Your Inbox'
+                        //   })
+                        // }}
                       >
                         Send Email Verification
                       </Button>
@@ -223,4 +235,4 @@ function Profile(props: InferGetServerSidePropsType<typeof getServerSideProps>) 
   )
 }
 
-export default profile
+//export default profile
