@@ -1,4 +1,5 @@
 import Express from "express";
+import { createUpdatedIdea } from "../../controllers/jobPortal/updateIdea";
 import {
   addJob,
   getAllJobs,
@@ -7,7 +8,12 @@ import {
   removeJob,
   addStartUp,
   findStartUp,
-  findAllStartUps
+  findAllStartUps,
+  addIdea,
+  findIdea,
+  findAllIdeas,
+  updateJob,
+  updateIdea,
 } from "../../models/jobCRUD";
 
 const router = Express.Router();
@@ -20,7 +26,7 @@ router.get("/", (_req, res) => {
 });
 
 router.post("/job", (_req, res) => {
-//   console.log(_req.body);
+  //   console.log(_req.body);
   addJob(_req.body.data)
     .then((result) => {
       res.status(200).json(result);
@@ -97,5 +103,49 @@ router.get("/startup", (_req, res) => {
       res.status(401).json(err);
     });
 });
+
+
+router.get("/idea", (_req, res) => {
+  findIdea(_req.body.id)
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      res.status(401).json(err);
+    });
+});
+router.get("/ideas", (_req, res) => {
+  findAllIdeas()
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      res.status(401).json(err);
+    });
+});
+router.post("/idea", (_req, res) => {
+  addIdea(_req.body.data)
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      res.status(401).json(err);
+    });
+});
+router.put("/idea", async(_req, res) => {
+  const idea = await createUpdatedIdea(_req.body.data, _req.body.id);   //controller
+  let newData = {
+    threads: idea
+  }
+  updateIdea(_req.body.id, newData)
+    .then((result) => {
+      res.status(200).json(result);
+    }).catch((err) => {
+      res.status(401).json(err);
+    }
+    );
+});
+
+
 
 module.exports = router;

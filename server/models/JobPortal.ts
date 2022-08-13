@@ -85,6 +85,26 @@ const startupSchema = new mongoose.Schema({
   }
 });
 
+const ideaSchema = new mongoose.Schema({
+  authorName: String,
+  authorEmail: String,
+  avatarURL: String,
+  title: String,
+  description: String,
+  upvotes: Number,
+  threads: [
+    {
+      authorName: String,
+      authorEmail: String,
+      avatarURL: String,
+      content: String,
+      date: String
+    }
+  ]
+});
+
+const Idea = mongoose.model("Idea", ideaSchema);
+
 const Skills = mongoose.model("Skills", skillsSchema);
 
 const Applicant = mongoose.model("JobPortal", applicantSchema);
@@ -93,4 +113,4 @@ const Job = mongoose.model("Job", jobSchema);
 
 const StartUp = mongoose.model("StartUp", startupSchema);
 
-export { Applicant, Skills, Job, StartUp };
+export { Applicant, Skills, Job, StartUp, Idea };
