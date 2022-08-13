@@ -57,21 +57,67 @@ export interface dashboardTableData {
 }
 
 
+export interface JobType {
+  _id: string;
+  title: string;
+  postedBy: string;
+  companyImageUrl: string;
+  publishedOn: Date;
+  description: string;
+  location: string;
+  pay: number;
+  deadline: string;
+  jobType: string;
+  skillsNecessary: string[];
+  applicants?: string[];
+}
+
+
 interface JobPortal {
   name: string;
   email: string;
-  password: string;
   imageURL: string;
+  gender: string;
+  age: number;
   location: string;
   description: string;
   website: string;
   linkedin: string;
   github: string;
   twitter: string;
-  experience: Experience[];
-  education: Education[];
-  skills: string[];
-  achievements: Achievement[];
+  experience?: Experience;
+  education?: Education;
+}
+interface JobFormPortal {
+  name: string;
+  email: string;
+  imageURL: string;
+  gender: string;
+  age: number;
+  location: string;
+  description: string;
+  website: string;
+  linkedin: string;
+  github: string;
+  twitter: string;
+  experience?: Experience;
+  education?: Education;
+  skills?: string;
+  achievements?: string;
+  instituationName: string;
+  degree: string;
+  fieldOfStudy: string;
+  startDate: string;
+  endDate: string;
+  gpa: number;
+  isCurrent: boolean;
+  companyName: string;
+  position: string;
+  description: string;
+  startDate: string;
+  endDate: string;
+  isCurrent: boolean;
+  maxNoOfYears: number;
 }
 
 interface Achievement {
@@ -97,4 +143,5 @@ interface Experience {
   startDate: string;
   endDate: string;
   isCurrent: boolean;
+  maxNoOfYears: number;
 }

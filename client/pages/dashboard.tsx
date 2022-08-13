@@ -64,38 +64,7 @@ function dashboard(props: InferGetServerSidePropsType<typeof getServerSideProps>
     <>
       <div className="min-h-screen">
         <LoadingOverlay visible={!data} />
-        <div
-          className="bg-yellow-100 border border-yellow-500 text-yellow-700 px-4 py-3 rounded-lg md:hidden"
-          role="alert"
-        >
-          <p className="font-bold">Notice:</p>
-          <p className="text-sm">
-            Laptop or slightly Large Display Device is Preferable{" "}
-          </p>
-        </div>
-        <div className="border-2 m-5 min-h-full rounded-lg">
-          {studentData?.length! > 0 ? (<>
-            <div className="flex flex-col items-center justify-center rounded-lg">
-              {data?.length > 0 && (<DataTable TableData={data} />)}
-            </div>
-            <Divider />
-            <div className="flex flex-col items-center justify-center rounded-lg">
-              <StudentDataTable studentTableData={studentData} />
-            </div>
-          </>
-          ) : (<>
-            <div className="p-5">
-              <h3 className="title-font text-xl mb-4 font-medium text-gray-900">
-                Welcome to {" "}
-                <span className="text-xl font-serif text-gray-500">
-                  Dhwani {" "}
-                </span>
-                <br />
-                You have not registered any student yet, register a student to get started.
-              </h3>
-            </div>
-          </>)}
-        </div>
+      
       </div></>
   )
 }
