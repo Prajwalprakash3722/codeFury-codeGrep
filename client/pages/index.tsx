@@ -148,7 +148,7 @@ export default function Index() {
 
                     <a
                       className="block p-4 border border-gray-100 shadow-sm rounded-xl focus:outline-none focus:ring hover:border-gray-200 hover:ring-1 hover:ring-gray-200"
-                      href="/accountant"
+                      href="/top-ideas"
                     >
                       <span className="inline-block p-3 rounded-lg bg-gray-50">
                         <svg
@@ -169,10 +169,10 @@ export default function Index() {
                         </svg>
                       </span>
 
-                      <h6 className="mt-2 font-bold">Accountant</h6>
+                      <h6 className="mt-2 font-bold">Top Ideas</h6>
 
                       <p className="hidden sm:mt-1 sm:text-sm sm:text-gray-600 sm:block">
-                        Lorem ipsum dolor sit amet consectetur.
+                        Revolutionary ideas
                       </p>
                     </a>
                   </div>
