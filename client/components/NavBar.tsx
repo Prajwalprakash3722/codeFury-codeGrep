@@ -27,8 +27,8 @@ const NavBar = () => {
         <div className="flex flex-row items-center justify-between space-x-4 lg:space-x-10">
           <div className="flex lg:w-0 lg:flex-1">
             <Image
-              src="dhwaniLogo.png"
-              alt="Dhwani Logo"
+              src="codegrep.png"
+              alt="codegrep Logo"
               className="h-16 w-16 lg:h-20 lg:w-20"
             />
             {/* <span className="w-20 h-10 bg-gray-200 rounded-lg"></span> */}
