@@ -95,8 +95,11 @@ router.get("/startups", (_req, res) => {
     });
 });
 router.get("/startup", (_req, res) => {
-  findStartUp(_req.body.id)
+  console.log(_req.query.clientID);
+  
+  findStartUp(_req.query.clientID as string)
     .then((result) => {
+      console.log(result);
       res.status(200).json(result);
     })
     .catch((err) => {
