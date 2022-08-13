@@ -2,6 +2,14 @@ import { Button } from "@mantine/core";
 import React from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { JobType } from "../@types";
+import axios from "axios";
+
+const fetchCompanyName = async (id: number) => {
+  const res = await axios.get(`http://localhost:5000/jobportal/startup`, {
+    params: { id },
+  });
+  return res.data;
+}
 
 function JobTitle(props: JobType) {
   const [applied, setApplied] = React.useState(false);
@@ -59,7 +67,7 @@ function JobTitle(props: JobType) {
                   className="font-medium underline hover:text-gray-700"
                 >
                   {"  "}
-                  {props.postedBy ?? "Unknown"}
+                  {fetchCompanyName(props.postedBy).then((res) => res.name)}
                 </a>
               </p>
               <p className="hidden sm:block sm:text-xs sm:text-gray-500">

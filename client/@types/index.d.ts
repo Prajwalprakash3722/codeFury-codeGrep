@@ -58,6 +58,7 @@ export interface dashboardTableData {
 
 
 export interface JobType {
+  clientID: number;
   _id: string;
   title: string;
   postedBy: string;

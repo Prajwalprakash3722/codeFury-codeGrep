@@ -16,7 +16,7 @@ const Apply: NextPage = () => {
     console.log(res.data);
     setJobs(res.data);
   };
-
+  
   return (
     <>
       <div className="relative max-w-5xl mx-auto pt-20 sm:pt-24 lg:pt-32 grid grid-cols-1 gap-4">
