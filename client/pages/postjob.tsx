@@ -117,7 +117,7 @@ const CreateApplication = (
         <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
           <div className="max-w-lg mx-auto">
             <h1 className="text-2xl font-bold text-center text-indigo-600 sm:text-3xl">
-              Create Application Form
+                   Post a Job  Application            
             </h1>
             <Box sx={{ maxWidth: 500 }} mx="auto">
               <form

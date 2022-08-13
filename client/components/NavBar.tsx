@@ -78,7 +78,7 @@ const NavBar = () => {
                     Create Application
                   </a>
                 </Link>
-                <Link href={`/create`}>
+                <Link href={`/postjob`}>
                   <a
                     className="text-gray-500 hover:text-indigo-400"
                     href="/postjob"
