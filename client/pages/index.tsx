@@ -15,7 +15,7 @@ export default function Index() {
               Welcome to
               <br className="inline-block" />
               <span className="text-2xl lg:text-9xl font-serif text-gray-500">
-                Dhwani <br className="lg:hidden" />
+                Codegrep <br className="lg:hidden" />
               </span>
             </h1>
             <section>
@@ -40,6 +40,7 @@ export default function Index() {
                               <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg">
                                 Dashboard
                               </button>
+                              
                             </a>
                           </Link>
                         </>

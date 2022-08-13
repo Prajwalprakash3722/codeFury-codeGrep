@@ -35,6 +35,32 @@ const NavBar = () => {
           <nav className="hidden space-x-8 text-sm font-medium md:flex">
             {user ? (
               <>
+                <Link href="/">
+                  <a className="text-gray-500 hover:text-indigo-400" href="/">
+                    Home
+                  </a>
+                </Link>
+                <Link href="/learn">
+                  <a
+                    className="text-gray-500 hover:text-indigo-400"
+                    href="/learn"
+                  >
+                    Learn More
+                  </a>
+                </Link>
+                <Link href="/contact">
+                  <a
+                    className="text-gray-500 hover:text-indigo-400"
+                    href="/contact"
+                  >
+                    Contact
+                  </a>
+                </Link>
+                <Link href="/apply">
+                  <a className="text-gray-500 hover:text-indigo-400" href="/apply">
+                    Apply
+                  </a>
+                </Link>
                 <Link href={`/dashboard`}>
                   <a
                     className="text-gray-500 hover:text-indigo-400"
@@ -43,6 +69,7 @@ const NavBar = () => {
                     Dashboard
                   </a>
                 </Link>
+                
                 {/* <Link href="/manage">
                   <a className="text-gray-500 hover:text-indigo-400" href="/contact">
                     Manage Students
@@ -75,11 +102,6 @@ const NavBar = () => {
                     href="/contact"
                   >
                     Contact
-                  </a>
-                </Link>
-                <Link href="/apply">
-                  <a className="text-gray-500 hover:text-indigo-400" href="/apply">
-                    Apply
                   </a>
                 </Link>
               </>
