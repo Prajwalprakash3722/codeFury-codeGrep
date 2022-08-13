@@ -13,9 +13,9 @@ export default function Index() {
           <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
             <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
               Welcome to
-              <br className="inline-flex" />
-              <span className="text-3xl lg:text-9xl font-serif text-gray-500">
-                Dhwani <br className="lg:hidden" />
+              <br className="inline-block" />
+              <span className="text-2xl lg:text-9xl font-serif text-gray-500">
+                Codegrep <br className="lg:hidden" />
               </span>
             </h1>
             <section>
@@ -40,6 +40,7 @@ export default function Index() {
                               <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg">
                                 Dashboard
                               </button>
+                              
                             </a>
                           </Link>
                         </>
