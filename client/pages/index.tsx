@@ -18,10 +18,10 @@ export default function Index() {
               </span>
             </h1>
             <section>
-              <div className="inline-block">
+              <div className="inline-flex">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-8 lg:gap-x-16 lg:items-center">
                   <div className="max-w-lg mx-auto text-center lg:text-left lg:mx-0">
-                    <h2 className="text-3xl font-bold sm:text-4xl">
+                    <h2 className="text-2xl font-bold sm:text-2xl">
                       Find your career path
                     </h2>
 
@@ -117,7 +117,7 @@ export default function Index() {
 
                     <a
                       className="block p-4 border border-gray-100 shadow-sm rounded-xl focus:outline-none focus:ring hover:border-gray-200 hover:ring-1 hover:ring-gray-200"
-                      href="/accountant"
+                      href="/top-startups"
                     >
                       <span className="inline-block p-3 rounded-lg bg-gray-50">
                         <svg
@@ -138,16 +138,16 @@ export default function Index() {
                         </svg>
                       </span>
 
-                      <h6 className="mt-2 font-bold">Accountant</h6>
+                      <h6 className="mt-2 font-bold">Top Startups</h6>
 
                       <p className="hidden sm:mt-1 sm:text-sm sm:text-gray-600 sm:block">
-                        Lorem ipsum dolor sit amet consectetur.
+                        For the investors.
                       </p>
                     </a>
 
                     <a
                       className="block p-4 border border-gray-100 shadow-sm rounded-xl focus:outline-none focus:ring hover:border-gray-200 hover:ring-1 hover:ring-gray-200"
-                      href="/accountant"
+                      href="/top-ideas"
                     >
                       <span className="inline-block p-3 rounded-lg bg-gray-50">
                         <svg
@@ -168,10 +168,10 @@ export default function Index() {
                         </svg>
                       </span>
 
-                      <h6 className="mt-2 font-bold">Accountant</h6>
+                      <h6 className="mt-2 font-bold">Top Ideas</h6>
 
                       <p className="hidden sm:mt-1 sm:text-sm sm:text-gray-600 sm:block">
-                        Lorem ipsum dolor sit amet consectetur.
+                        Revolutionary ideas
                       </p>
                     </a>
                   </div>
@@ -200,8 +200,8 @@ export default function Index() {
               src="hero.webp"
               className="object-cover object-center rounded"
               alt="hero"
-              height={600}
-              width={600}
+              height={500}
+              width={500}
             />
           </div>
         </div>

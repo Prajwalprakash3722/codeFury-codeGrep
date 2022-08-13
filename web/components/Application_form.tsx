@@ -1,9 +1,9 @@
 import { Box, Button, Divider, Image, LoadingOverlay } from '@mantine/core'
 import React, { useEffect } from 'react'
-// import { getProfile, profileProps } from '../components/useFireStoreQuery';
+import { getProfile, profileProps } from '../components/useFireStoreQuery';
 import toast, { Toaster } from 'react-hot-toast';
 
-// import ChangePasswordModal from '../components/changePasswordModal';
+import ChangePasswordModal from '../components/changePasswordModal';
 import { GetServerSidePropsContext } from 'next';
 import { InferGetServerSidePropsType } from 'next';
 // import { firebase, } from '../lib/firebaseClient';
