@@ -121,6 +121,14 @@ const NavBar = () => {
                     Apply
                   </a>
                 </Link>
+                  <Link href={`/pitch`}>
+                  <a
+                    className="text-gray-500 hover:text-indigo-400"
+                    href="/pitch"
+                  >
+                    Featured pitches
+                  </a>
+                </Link>
               </>
             )}
           </nav>
