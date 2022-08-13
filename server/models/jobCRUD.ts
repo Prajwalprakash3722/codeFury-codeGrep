@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { Job, Applicant } from "./JobPortal";
+import { Job, Applicant, StartUp } from "./JobPortal";
 
 type JobType = {
   title: String,
@@ -51,4 +51,28 @@ const getApplicants = async () => {
   return await Applicant.find();
 };
 
-export { addJob, getAllJobs, getJob, removeJob, updateJob, registerApplicant, getApplicants };
+const addStartUp = async (data: any) => {
+  const newStartUp = new StartUp(data);
+  return await newStartUp.save();
+};
+
+const findStartUp = async (id: String) => {
+  return await StartUp.findById(id);
+};
+
+const findAllStartUps = async () => {
+  return await StartUp.find();
+};
+
+export {
+  addJob,
+  getAllJobs,
+  getJob,
+  removeJob,
+  updateJob,
+  registerApplicant,
+  getApplicants,
+  addStartUp,
+  findStartUp,
+  findAllStartUps
+};
