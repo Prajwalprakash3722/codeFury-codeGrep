@@ -18,8 +18,7 @@ const NavBar = () => {
       pack.firebase.auth().signOut();
     });
     router.push("/login");
-  }
-
+  };
 
   return (
     <header className="shadow-sm">
@@ -41,24 +40,27 @@ const NavBar = () => {
                     Home
                   </a>
                 </Link>
-                <Link href="/learn">
+                {/* <Link href="/learn">
                   <a
                     className="text-gray-500 hover:text-indigo-400"
                     href="/learn"
                   >
                     Learn More
                   </a>
-                </Link>
-                <Link href="/contact">
+                </Link> */}
+                {/* <Link href="/contact">
                   <a
                     className="text-gray-500 hover:text-indigo-400"
                     href="/contact"
                   >
                     Contact
                   </a>
-                </Link>
+                </Link> */}
                 <Link href="/apply">
-                  <a className="text-gray-500 hover:text-indigo-400" href="/apply">
+                  <a
+                    className="text-gray-500 hover:text-indigo-400"
+                    href="/apply"
+                  >
                     Apply
                   </a>
                 </Link>
@@ -67,7 +69,7 @@ const NavBar = () => {
                     className="text-gray-500 hover:text-indigo-400"
                     href="/learn"
                   >
-                    Dashboard
+                    Chat Box
                   </a>
                 </Link>
                 <Link href={`/create`}>
@@ -84,6 +86,14 @@ const NavBar = () => {
                     href="/postjob"
                   >
                     Post a job
+                  </a>
+                </Link>
+                <Link href={`/pitch`}>
+                  <a
+                    className="text-gray-500 hover:text-indigo-400"
+                    href="/pitch"
+                  >
+                    Featured pitches
                   </a>
                 </Link>
                 {/* <Link href="/manage">
@@ -104,28 +114,27 @@ const NavBar = () => {
                     Home
                   </a>
                 </Link>
-                <Link href="/learn">
+                {/* <Link href="/learn">
                   <a
                     className="text-gray-500 hover:text-indigo-400"
                     href="/learn"
                   >
                     Learn More
                   </a>
-                </Link>
-                <Link href="/contact">
+                </Link> */}
+                {/* <Link href="/contact">
                   <a
                     className="text-gray-500 hover:text-indigo-400"
                     href="/contact"
                   >
                     Contact
                   </a>
-                </Link>
+                </Link> */}
                 <Link href="/apply">
                   <a
                     className="text-gray-500 hover:text-indigo-400"
                     href="/apply"
                   >
-
                     Apply
                   </a>
                 </Link>
@@ -205,12 +214,63 @@ const NavBar = () => {
                 <>
                   <Menu.Label>Goto</Menu.Label>
                   <Menu.Item>
+                    <Link href="/">
+                      <a
+                        className="text-gray-500 hover:text-indigo-400"
+                        href="/"
+                      >
+                        Home
+                      </a>
+                    </Link>
+                  </Menu.Item>
+                  <Menu.Item>
                     <Link href="/authenticated">
                       <a className="text-gray-500" href="/dashboard">
                         Dashboard
                       </a>
                     </Link>
                   </Menu.Item>
+                  <Menu.Item>
+                    <Link href={`/dashboard`}>
+                      <a
+                        className="text-gray-500 hover:text-indigo-400"
+                        href="/learn"
+                      >
+                        Chat Box
+                      </a>
+                    </Link>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <Link href={`/create`}>
+                      <a
+                        className="text-gray-500 hover:text-indigo-400"
+                        href="/create"
+                      >
+                        Create Application
+                      </a>
+                    </Link>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <Link href={`/pitch`}>
+                      <a
+                        className="text-gray-500 hover:text-indigo-400"
+                        href="/pitch"
+                      >
+                        Featured pitches
+                      </a>
+                    </Link>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <Link href={`/pitch`}>
+                      <a
+                        className="text-gray-500 hover:text-indigo-400"
+                        href="/pitch"
+                      >
+                        Featured pitches
+                      </a>
+                    </Link>
+                  </Menu.Item>
+
                   {/* <Menu.Item>
                     <Link href="/authenticated">
                       <a className="text-gray-500" href="/manage">
@@ -218,7 +278,7 @@ const NavBar = () => {
                       </a>
                     </Link>
                   </Menu.Item> */}
-                  <Divider />
+                  {/* <Divider /> */}
                   <Menu.Label>Actions</Menu.Label>
                   <Menu.Item color="indigo">
                     <button onClick={handleLogout}>Logout</button>
@@ -286,10 +346,7 @@ const Footer = () => {
             <p className="font-medium">Services</p>
 
             <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
-              <a className="hover:opacity-75">
-                {" "}
-                1on1 Coaching{" "}
-              </a>
+              <a className="hover:opacity-75"> 1on1 Coaching </a>
             </nav>
           </div>
 
@@ -297,42 +354,12 @@ const Footer = () => {
             <p className="font-medium">Legal</p>
 
             <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
-              <a className="hover:opacity-75">
-                {" "}
-                Privacy Policy{" "}
-              </a>
+              <a className="hover:opacity-75"> Privacy Policy </a>
             </nav>
           </div>
         </div>
         <div className="pt-8 mt-8 border-t border-gray-100 sm:items-center sm:justify-between sm:flex">
-          <p className="text-xs text-gray-500">&copy; 2022 Dhwani IISC (Ustaah Labs)</p>
-        </div>
-      </div>
-      <div className="flex flex-col items-center justify-center gap-4">
-        <span className="text-xs text-gray-500 text-center">
-          Collaboration with{" "}
-        </span>
-        <div className="flex items-center justify-center gap-4 mb-2">
-          <Image
-            src="ustaahLogo.png"
-            alt="Dhwani Logo"
-            className="h-full object-cover rounded-full w-16 lg:h-20 lg:w-20 hover:shadow-xl transition-shadow duration-300 ease-in-out p-4"
-          />
-          <Image
-            src="cpdmLogo.png"
-            alt="Dhwani Logo"
-            className="h-full object-cover rounded-full w-16 lg:h-20 lg:w-20 hover:shadow-xl transition-shadow duration-300 ease-in-out p-4"
-          />
-          <Image
-            src="IISc.png"
-            alt="Dhwani Logo"
-            className="h-full object-cover rounded-full w-16 lg:h-20 lg:w-20 hover:shadow-xl transition-shadow duration-300 ease-in-out p-4"
-          />
-          <Image
-            src="johnsLogo.png"
-            alt="Dhwani Logo"
-            className="h-full object-cover rounded-full w-16 lg:h-20 lg:w-20 hover:shadow-xl transition-shadow duration-300 ease-in-out p-4"
-          />
+          <p className="text-xs text-gray-500">&copy; 2022 Code Grep Team</p>
         </div>
       </div>
     </footer>

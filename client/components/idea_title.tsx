@@ -2,6 +2,7 @@ import { Button, Group } from "@mantine/core";
 import axios from "axios";
 import { useRouter } from "next/router";
 import React from "react";
+import Comment from "./Comments";
 
 type Props = {
   _id: string;
@@ -16,12 +17,12 @@ function IdeaTitle(props: Props) {
   const [upvotes, setUpvotes] = React.useState(false);
   const router = useRouter();
   const handleUpvote = async () => {
-    await axios.put("http://localhost:5000/jobportal/idea", {
-      id: props._id,
-      upvotes: upvotes ? props.upvotes - 1 : props.upvotes + 1,
-    });
+    // await axios.put("http://localhost:5000/jobportal/idea", {
+    //   id: props._id,
+    //   upvotes: upvotes ? props.upvotes - 1 : props.upvotes + 1,
+    // });
     setUpvotes(!upvotes);
-    router.reload();
+    // router.reload();
   };
 
   return (
@@ -51,7 +52,7 @@ function IdeaTitle(props: Props) {
             {props.title}
           </h5>
 
-          <p className="hidden mt-2 text-sm sm:block">{props.description}</p>
+          <p className="hidden m-2 text-sm sm:block">{props.description}</p>
         </div>
         <Group>
           {!upvotes ? (
@@ -81,6 +82,7 @@ function IdeaTitle(props: Props) {
             Invest
           </Button>
         </Group>
+        <Comment />
       </div>
     </>
   );

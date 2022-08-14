@@ -2,7 +2,7 @@ import { Button, Group } from "@mantine/core";
 import * as React from "react";
 import ReplyComponent from "./ReplyComponent";
 
-export const CommentCard = ({ comment, padding = 0 }:any) => {
+export const CommentCard = ({ comment, padding = 0 }: any) => {
   const [edit, setEdit] = React.useState(false);
 
   const handleClick = () => {
@@ -12,9 +12,9 @@ export const CommentCard = ({ comment, padding = 0 }:any) => {
   return (
     <div
       style={{ marginLeft: `${padding}px`, margin: "1rem" }}
-      className="border-l-8"
+      className="border-l-4"
     >
-      <p className="text-xl font-serif">{comment.text}</p>
+      <p className="text-lg font-mono">{comment.text}</p>
       {comment.children.length > 0 &&
         comment.children.map((childComment: any, index: any) => (
           <CommentCard

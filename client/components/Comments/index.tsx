@@ -25,8 +25,7 @@ export default function Comment() {
   let context = { state, dispatch };
   return (
     <CommentProvider value={context}>
-      <div className="max-w-2xl flex flex-col justify-center items-center">
-      <h2 className="text-gray-900 font-bold text-center">Comments</h2>
+      <div className="max-w-2xl flex flex-col justify-center items-center m-4 p-4">
       <CommentForm />
       <CommentList />
       </div>
