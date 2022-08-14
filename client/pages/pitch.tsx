@@ -44,7 +44,7 @@ export default Pitch
 
 function Buttons_pitch() {
     return (<>
-        <a className="relative inline text-sm font-medium text-white group focus:outline-none focus:ring" href="/download">
+        <a className="relative inline text-sm font-medium text-white group focus:outline-none focus:ring" href="/startup-submission">
             <span className="absolute inset-0 border border-red-600 group-active:border-red-500"></span>
             <span className="block px-12 py-3 transition-transform bg-red-600 border border-red-600 active:border-red-500 active:bg-red-500 group-hover:-translate-x-1 group-hover:-translate-y-1">
                 Subit your solution/pitch
