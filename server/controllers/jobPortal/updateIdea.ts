@@ -14,10 +14,18 @@ const createUpdatedIdea = async (data: any, id: String) => {
     //     result?.threads.push(data);
     //     return result?.threads;
     // }).catch((err) => {
-    //     console.log(err);
+    //     console.log(err); 
     // });
 }
 
+const createUpdatedUpvotes = async (data: any, id: String) => {
+    let oldData: any = await findIdea(id);
+    // console.log(oldData.threads);
+    oldData.upvotes = + 1;
+    return oldData;
+}
+
 export {
-    createUpdatedIdea
+    createUpdatedIdea,
+    createUpdatedUpvotes
 };
